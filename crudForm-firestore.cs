@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using Google.Cloud.Firestore.V1;
 
 namespace crud_grpc_firebase
 {
     public partial class crudForm : Form
     {
         FirestoreDb database;
+        private string selectedDocumentId;
+
         public crudForm()
         {
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace crud_grpc_firebase
             };
 
             collection.AddAsync(data);
+            dataLoad();
 
 
         }
@@ -70,15 +74,27 @@ namespace crud_grpc_firebase
             }
         }
 
-        void updateDocument()
+        void updateDocument(String documentId)
         {
+            DocumentReference documentReference = database.Collection("transaction").Document(documentId);
+            Dictionary<string, object> updates = new Dictionary<string, object>()
+                {
+                    {"NamaBarang", namaBarangTextBox.Text },
+                    {"NamaPembeli", namaPembeliTextBox.Text },
+                    {"Kuantitas", int.Parse(kuantitasTextBox.Text) },
+                    {"HargaBarang", int.Parse(hargaBarangTextBox.Text) },
+                    {"TokenUnik", tokenUnikTextBox.Text }
+                };
 
+            documentReference.UpdateAsync(updates);
         }
 
+     
         void deleteDocument(string documentId) 
         {
             DocumentReference documentReference = database.Collection("transaction").Document(documentId);
             documentReference.DeleteAsync();
+            dataLoad();
         }
 
         public async void GetAllDocument(string nameofCollection)
@@ -125,17 +141,8 @@ namespace crud_grpc_firebase
             }
         }
 
-        bool checkUniqueToken(string afterConfirm, string beforeConfirm)
-        {
-            if (afterConfirm == beforeConfirm)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        bool checkUniqueToken(string afterConfirm, string beforeConfirm) => afterConfirm == beforeConfirm;
+
         private void userDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             // Check if a row is selected
@@ -153,27 +160,29 @@ namespace crud_grpc_firebase
         {
             if (e.RowIndex >= 0)
             {
-              
+
                 if (e.ColumnIndex == userDataGrid.Columns["EditColumn"].Index)
                 {
-                   
                     DataGridViewRow row = userDataGrid.Rows[e.RowIndex];
-                    string documentId = row.Cells["idColumn"].Value.ToString();
-                    // Lakukan tindakan sesuai dengan kebutuhan Anda
-
+                    selectedDocumentId = row.Cells["idColumn"].Value.ToString();
+                    getDocumentWithID(selectedDocumentId);
                 }
 
-              
+
                 if (e.ColumnIndex == userDataGrid.Columns["DeleteColumn"].Index)
                 {
-                  
+
                     DataGridViewRow row = userDataGrid.Rows[e.RowIndex];
-                    string documentId = row.Cells["idColumn"].Value.ToString();
-                    // Lakukan tindakan sesuai dengan kebutuhan Anda
-                    deleteDocument(documentId);
-                    dataLoad();
+                    selectedDocumentId = row.Cells["idColumn"].Value.ToString();
+                    deleteDocument(selectedDocumentId);
+
                 }
             }
+        }
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            updateDocument(selectedDocumentId);
+            dataLoad();
         }
     }
 }

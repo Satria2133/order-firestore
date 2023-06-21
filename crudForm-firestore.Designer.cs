@@ -51,6 +51,7 @@
             this.tokenUnikColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,11 +260,22 @@
             this.deleteColumn.UseColumnTextForButtonValue = true;
             this.deleteColumn.Width = 125;
             // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(916, 267);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(118, 30);
+            this.updateButton.TabIndex = 15;
+            this.updateButton.Text = "update!";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // crudForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1106, 703);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.confirmTokenUnikLabel);
@@ -313,5 +325,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tokenUnikColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
+        private System.Windows.Forms.Button updateButton;
     }
 }
