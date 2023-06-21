@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crud-grpc-firebase", "crud-grpc-firebase.csproj", "{FFA4AD68-0806-4C0E-8091-6D161D0F08DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFA4AD68-0806-4C0E-8091-6D161D0F08DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA4AD68-0806-4C0E-8091-6D161D0F08DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA4AD68-0806-4C0E-8091-6D161D0F08DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA4AD68-0806-4C0E-8091-6D161D0F08DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C25FFE77-5416-40E8-A087-BF006E1DD2FC}
+	EndGlobalSection
+EndGlobal
