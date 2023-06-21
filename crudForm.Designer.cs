@@ -43,7 +43,6 @@
             this.confirmTokenUnikTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.userDataGrid = new System.Windows.Forms.DataGridView();
-            this.syncTableButton = new System.Windows.Forms.Button();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaBarangColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaPembeliColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -190,30 +189,21 @@
             this.tokenUnikColumn,
             this.EditColumn,
             this.deleteColumn});
-            this.userDataGrid.Location = new System.Drawing.Point(109, 337);
+            this.userDataGrid.Location = new System.Drawing.Point(88, 327);
             this.userDataGrid.Name = "userDataGrid";
             this.userDataGrid.RowHeadersWidth = 51;
             this.userDataGrid.RowTemplate.Height = 24;
-            this.userDataGrid.Size = new System.Drawing.Size(926, 328);
+            this.userDataGrid.Size = new System.Drawing.Size(947, 328);
             this.userDataGrid.TabIndex = 14;
+            this.userDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userDataGrid_CellClick);
             this.userDataGrid.SelectionChanged += new System.EventHandler(this.userDataGrid_SelectionChanged);
-            // 
-            // syncTableButton
-            // 
-            this.syncTableButton.Location = new System.Drawing.Point(834, 283);
-            this.syncTableButton.Name = "syncTableButton";
-            this.syncTableButton.Size = new System.Drawing.Size(201, 35);
-            this.syncTableButton.TabIndex = 15;
-            this.syncTableButton.Text = "sync table!";
-            this.syncTableButton.UseVisualStyleBackColor = true;
-            this.syncTableButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // idColumn
             // 
             this.idColumn.HeaderText = "ID";
             this.idColumn.MinimumWidth = 6;
             this.idColumn.Name = "idColumn";
-            this.idColumn.Width = 125;
+            this.idColumn.Width = 50;
             // 
             // namaBarangColumn
             // 
@@ -252,9 +242,12 @@
             // 
             // EditColumn
             // 
+            this.EditColumn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EditColumn.HeaderText = "Edit";
             this.EditColumn.MinimumWidth = 6;
             this.EditColumn.Name = "EditColumn";
+            this.EditColumn.Text = "Edit";
+            this.EditColumn.UseColumnTextForButtonValue = true;
             this.EditColumn.Width = 125;
             // 
             // deleteColumn
@@ -262,6 +255,8 @@
             this.deleteColumn.HeaderText = "Delete";
             this.deleteColumn.MinimumWidth = 6;
             this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.Text = "Delete";
+            this.deleteColumn.UseColumnTextForButtonValue = true;
             this.deleteColumn.Width = 125;
             // 
             // crudForm
@@ -269,7 +264,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1106, 703);
-            this.Controls.Add(this.syncTableButton);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.confirmTokenUnikLabel);
@@ -311,7 +305,6 @@
         private System.Windows.Forms.TextBox confirmTokenUnikTextBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.DataGridView userDataGrid;
-        private System.Windows.Forms.Button syncTableButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaBarangColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaPembeliColumn;

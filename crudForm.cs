@@ -20,12 +20,20 @@ namespace crud_grpc_firebase
             InitializeComponent();
         }
 
+        void dataLoad() 
+        {
+            userDataGrid.Rows.Clear();
+            GetAllDocument("transaction");
+        }
+
         private void crudForm_Load(object sender, EventArgs e)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "cloudfire.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
             database = FirestoreDb.Create("crud-grpc-firebase");
+            dataLoad();
+           
         }
 
         void addDocumentWithAutoID(string namaBarang, string namaPembeli, int hargaBarang, int Kuantitas, string TokenUnik)
@@ -62,12 +70,15 @@ namespace crud_grpc_firebase
             }
         }
 
-        void updateDocumentWithID(string documentId)
+        void updateDocument()
+        {
+
+        }
+
+        void deleteDocument(string documentId) 
         {
             DocumentReference documentReference = database.Collection("transaction").Document(documentId);
-            DocumentSnapshot documentSnapshot = documentReference.GetSnapshotAsync().GetAwaiter().GetResult();
-
-
+            documentReference.DeleteAsync();
         }
 
         public async void GetAllDocument(string nameofCollection)
@@ -90,8 +101,6 @@ namespace crud_grpc_firebase
                 }
             }
         }
-
-
 
 
         private void checkButton_Click(object sender, EventArgs e)
@@ -127,13 +136,6 @@ namespace crud_grpc_firebase
                 return false;
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            userDataGrid.Rows.Clear();
-            GetAllDocument("transaction");
-        }
-
         private void userDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             // Check if a row is selected
@@ -144,6 +146,33 @@ namespace crud_grpc_firebase
 
                 // Use the document ID to fetch the data from Firestore and populate the textboxes
                 getDocumentWithID(documentId);
+            }
+        }
+
+        private void userDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+              
+                if (e.ColumnIndex == userDataGrid.Columns["EditColumn"].Index)
+                {
+                   
+                    DataGridViewRow row = userDataGrid.Rows[e.RowIndex];
+                    string documentId = row.Cells["idColumn"].Value.ToString();
+                    // Lakukan tindakan sesuai dengan kebutuhan Anda
+
+                }
+
+              
+                if (e.ColumnIndex == userDataGrid.Columns["DeleteColumn"].Index)
+                {
+                  
+                    DataGridViewRow row = userDataGrid.Rows[e.RowIndex];
+                    string documentId = row.Cells["idColumn"].Value.ToString();
+                    // Lakukan tindakan sesuai dengan kebutuhan Anda
+                    deleteDocument(documentId);
+                    dataLoad();
+                }
             }
         }
     }
