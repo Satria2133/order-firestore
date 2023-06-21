@@ -43,6 +43,8 @@
             this.confirmTokenUnikTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.userDataGrid = new System.Windows.Forms.DataGridView();
+            this.syncTableButton = new System.Windows.Forms.Button();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaBarangColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaPembeliColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hargaBarangColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +52,6 @@
             this.tokenUnikColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             this.checkButton.Location = new System.Drawing.Point(910, 211);
             this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(125, 26);
+            this.checkButton.Size = new System.Drawing.Size(125, 33);
             this.checkButton.TabIndex = 0;
             this.checkButton.Text = "add!";
             this.checkButton.UseVisualStyleBackColor = true;
@@ -181,6 +182,7 @@
             // 
             this.userDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.userDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
             this.namaBarangColumn,
             this.namaPembeliColumn,
             this.hargaBarangColumn,
@@ -188,12 +190,30 @@
             this.tokenUnikColumn,
             this.EditColumn,
             this.deleteColumn});
-            this.userDataGrid.Location = new System.Drawing.Point(89, 320);
+            this.userDataGrid.Location = new System.Drawing.Point(109, 337);
             this.userDataGrid.Name = "userDataGrid";
             this.userDataGrid.RowHeadersWidth = 51;
             this.userDataGrid.RowTemplate.Height = 24;
             this.userDataGrid.Size = new System.Drawing.Size(926, 328);
             this.userDataGrid.TabIndex = 14;
+            this.userDataGrid.SelectionChanged += new System.EventHandler(this.userDataGrid_SelectionChanged);
+            // 
+            // syncTableButton
+            // 
+            this.syncTableButton.Location = new System.Drawing.Point(834, 283);
+            this.syncTableButton.Name = "syncTableButton";
+            this.syncTableButton.Size = new System.Drawing.Size(201, 35);
+            this.syncTableButton.TabIndex = 15;
+            this.syncTableButton.Text = "sync table!";
+            this.syncTableButton.UseVisualStyleBackColor = true;
+            this.syncTableButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "ID";
+            this.idColumn.MinimumWidth = 6;
+            this.idColumn.Name = "idColumn";
+            this.idColumn.Width = 125;
             // 
             // namaBarangColumn
             // 
@@ -244,22 +264,12 @@
             this.deleteColumn.Name = "deleteColumn";
             this.deleteColumn.Width = 125;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(910, 256);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // crudForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1106, 703);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.syncTableButton);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.confirmTokenUnikLabel);
@@ -301,6 +311,8 @@
         private System.Windows.Forms.TextBox confirmTokenUnikTextBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.DataGridView userDataGrid;
+        private System.Windows.Forms.Button syncTableButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaBarangColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaPembeliColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hargaBarangColumn;
@@ -308,6 +320,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tokenUnikColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
-        private System.Windows.Forms.Button button1;
     }
 }
