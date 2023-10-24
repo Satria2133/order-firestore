@@ -43,6 +43,7 @@
             this.confirmTokenUnikTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.userDataGrid = new System.Windows.Forms.DataGridView();
+            this.updateButton = new System.Windows.Forms.Button();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaBarangColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaPembeliColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +52,6 @@
             this.tokenUnikColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,6 +199,16 @@
             this.userDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userDataGrid_CellClick);
             this.userDataGrid.SelectionChanged += new System.EventHandler(this.userDataGrid_SelectionChanged);
             // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(916, 267);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(118, 30);
+            this.updateButton.TabIndex = 15;
+            this.updateButton.Text = "update!";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // idColumn
             // 
             this.idColumn.HeaderText = "ID";
@@ -253,22 +263,13 @@
             // 
             // deleteColumn
             // 
+            this.deleteColumn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteColumn.HeaderText = "Delete";
             this.deleteColumn.MinimumWidth = 6;
             this.deleteColumn.Name = "deleteColumn";
             this.deleteColumn.Text = "Delete";
             this.deleteColumn.UseColumnTextForButtonValue = true;
             this.deleteColumn.Width = 125;
-            // 
-            // updateButton
-            // 
-            this.updateButton.Location = new System.Drawing.Point(916, 267);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(118, 30);
-            this.updateButton.TabIndex = 15;
-            this.updateButton.Text = "update!";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // crudForm
             // 
@@ -317,6 +318,7 @@
         private System.Windows.Forms.TextBox confirmTokenUnikTextBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.DataGridView userDataGrid;
+        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaBarangColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaPembeliColumn;
@@ -325,6 +327,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tokenUnikColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
-        private System.Windows.Forms.Button updateButton;
     }
 }
